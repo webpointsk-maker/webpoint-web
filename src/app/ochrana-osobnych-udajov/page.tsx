@@ -72,8 +72,9 @@ export default function Privacy() {
         <ul className="list-disc space-y-1 pl-6">
           <li>meno a priezvisko,</li>
           <li>telefónne číslo a e-mailovú adresu,</li>
-          <li>informácie o vašom podnikaní (čomu sa venujete, odkaz na web alebo sociálne siete),</li>
-          <li>vašu odpoveď na otázku, či ste pripravení investovať do reklamy.</li>
+          <li>odvetvie, v ktorom podnikáte, a odkaz na váš web alebo sociálne siete,</li>
+          <li>približný mesačný obrat vášho podnikania (vo forme rozpätia),</li>
+          <li>informáciu, ako ste sa o nás dozvedeli.</li>
         </ul>
         <p>
           Rovnako spracúvame údaje, ktoré nám pošlete e-mailom, správou alebo poviete počas hovoru.

@@ -21,6 +21,53 @@ export const company = {
   vat: "Neplatiteľ DPH",
 };
 
+// Otázky vo formulári (každá má vlastnú obrazovku). Možnosti sa dajú voľne upravovať.
+export const leadQuestions = [
+  {
+    name: "source",
+    label: "Odkiaľ",
+    question: "Ako ste sa o nás dozvedeli?",
+    hint: "",
+    options: [
+      "Videl/a som vašu reklamu",
+      "Odporučil mi vás známy alebo klient",
+      "Sledujem váš obsah na sociálnych sieťach",
+      "Našiel/a som vás na Google",
+      "Iným spôsobom",
+    ],
+  },
+  {
+    name: "industry",
+    label: "Odvetvie",
+    question: "V akom odvetví podnikáte?",
+    hint: "",
+    options: [
+      "Krása a starostlivosť (salón, kaderníctvo, kozmetika, tetovanie)",
+      "Zdravie a pohyb (osobný tréner, fitko, joga, kliniky)",
+      "Reality a financie (makléri, finanční poradcovia, hypotéky)",
+      "Stavebníctvo a remeslá (rekonštrukcie, interiéry, fotovoltika)",
+      "Údržba a čistenie (tepovanie, čistenie fasád, servisy)",
+      "Poradenstvo a vzdelávanie (coaching, kurzy, účtovníctvo, právo)",
+      "Zážitky a podujatia (pobyty, oslavy, workshopy)",
+      "Iné služby",
+    ],
+  },
+  {
+    name: "revenue",
+    label: "Mesačný obrat",
+    question: "Aký je váš aktuálny mesačný obrat?",
+    hint: "Približne, koľko vaše podnikanie mesačne zarobí na tržbách.",
+    options: [
+      "Menej ako 2 000 €",
+      "2 000 – 5 000 €",
+      "5 000 – 10 000 €",
+      "10 000 – 30 000 €",
+      "30 000 – 100 000 €",
+      "Viac ako 100 000 €",
+    ],
+  },
+] as const;
+
 // Odkazy na sociálne siete – doplňte URL, prázdne sa nezobrazia.
 export const socials: { label: string; href: string }[] = [
   { label: "Instagram", href: "" },

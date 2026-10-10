@@ -35,7 +35,7 @@ export function Contact() {
         <div className="mt-20 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <Reveal>
             <p className="text-lg leading-relaxed text-white/65 sm:text-xl">
-              Vyplňte krátky formulár a ozveme sa vám, aby sme si dohodli termín hovoru.
+              Odpovedzte na 3 krátke otázky a nechajte nám kontakt. Zaberie to necelú minútu a ozveme sa vám, aby sme si dohodli termín hovoru.
             </p>
             <ul className="mt-8 space-y-4">
               {expect.map((t) => (

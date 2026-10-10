@@ -10,17 +10,21 @@ export async function submitLead(_prev: LeadState, data: FormData): Promise<Lead
   // Honeypot proti spamu – skryté pole, ktoré človek nevyplní
   if (field(data, "company_website")) return { status: "success" };
 
-  const lead = {
-    meno: field(data, "name"),
+  const lead: Lead = {
+    meno: `${field(data, "firstName")} ${field(data, "lastName")}`.trim(),
     telefon: field(data, "phone"),
     email: field(data, "email"),
-    biznis: field(data, "business"),
+    zdroj: field(data, "source"),
+    odvetvie: field(data, "industry"),
+    obrat: field(data, "revenue"),
     web: field(data, "link"),
-    investicia: field(data, "invest"),
   };
 
-  if (!lead.meno || !lead.telefon || !lead.email || !lead.biznis) {
-    return { status: "error", message: "Vyplňte prosím všetky povinné polia." };
+  if (!field(data, "firstName") || !field(data, "lastName") || !lead.telefon || !lead.email) {
+    return { status: "error", message: "Vyplňte prosím meno, priezvisko, e-mail a telefón." };
+  }
+  if (!lead.zdroj || !lead.odvetvie || !lead.obrat) {
+    return { status: "error", message: "Odpovedzte prosím na všetky otázky." };
   }
   // Telefón kontrolujeme, lebo sa opakuje v automatickej odpovedi (ochrana pred zneužitím na spam)
   if (!/^\+?[\d\s()./-]{6,20}$/.test(lead.telefon)) {
@@ -28,9 +32,6 @@ export async function submitLead(_prev: LeadState, data: FormData): Promise<Lead
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email)) {
     return { status: "error", message: "Skontrolujte prosím e-mailovú adresu." };
-  }
-  if (data.get("consent") !== "on") {
-    return { status: "error", message: "Potvrďte prosím, že ste sa oboznámili s informáciami o spracúvaní osobných údajov." };
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -53,7 +54,7 @@ export async function submitLead(_prev: LeadState, data: FormData): Promise<Lead
     from,
     to: [to],
     reply_to: lead.email,
-    subject: `Nový dopyt z webu: ${lead.meno} (${lead.biznis})`,
+    subject: `Nový dopyt: ${lead.meno} · ${lead.odvetvie.split(" (")[0]} · ${lead.obrat}`,
     html: notificationHtml(lead),
     text: (Object.keys(lead) as LeadKey[]).map((k) => `${labels[k]}: ${lead[k] || "–"}`).join("\n"),
   });
@@ -77,16 +78,25 @@ export async function submitLead(_prev: LeadState, data: FormData): Promise<Lead
   return { status: "success" };
 }
 
-type Lead = { meno: string; telefon: string; email: string; biznis: string; web: string; investicia: string };
+type Lead = {
+  meno: string;
+  telefon: string;
+  email: string;
+  zdroj: string;
+  odvetvie: string;
+  obrat: string;
+  web: string;
+};
 type LeadKey = keyof Lead;
 
 const labels: Record<LeadKey, string> = {
   meno: "Meno",
   telefon: "Telefón",
   email: "E-mail",
-  biznis: "Čomu sa venuje",
+  zdroj: "Ako sa o nás dozvedel",
+  odvetvie: "Odvetvie",
+  obrat: "Mesačný obrat",
   web: "Web / Instagram",
-  investicia: "Investícia do reklamy",
 };
 
 async function sendEmail(apiKey: string, payload: Record<string, unknown>) {
