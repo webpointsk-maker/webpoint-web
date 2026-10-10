@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+!.env.example
+
+# iCloud: priečinky mimo synchronizácie
+*.nosync
+/.next
+/node_modules
+
+# lokálne nastavenia nástrojov
+.claude/
