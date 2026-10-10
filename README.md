@@ -35,9 +35,13 @@ Dopyty sa posielajú na e-mail cez [Resend](https://resend.com) (zadarmo do 3 00
    povinne `RESEND_API_KEY`, voliteľne `LEAD_TO_EMAIL` (inak sa použije kontaktný e-mail z `site.ts`)
    a `LEAD_FROM_EMAIL`. Po zmene premenných treba spraviť **Redeploy**.
 
-Bez overenej domény Resend posiela len na e-mail vášho Resend účtu a odosielateľ je `onboarding@resend.dev`.
-Po overení domény webpointsk.com (Resend → Domains, pridať DNS záznamy u registrátora) nastavte
-`LEAD_FROM_EMAIL="WebPoint <dopyt@webpointsk.com>"`.
+Doména webpointsk.com je v Resend overená, e-maily preto odchádzajú z `WebPoint <dopyt@webpointsk.com>`
+(zmeniť sa dá premennou `LEAD_FROM_EMAIL`). Po odoslaní formulára:
+
+1. vám príde e-mail s dopytom (odpoveď ide priamo záujemcovi),
+2. záujemca dostane automatické potvrdenie (odpoveď naň ide na kontaktný e-mail). Vypnete ho `AUTO_REPLY=off`.
+
+Na adresu `dopyt@webpointsk.com` sa nedá písať – je len odosielacia.
 
 Bez kľúča sa dopyt pri vývoji iba vypíše do konzoly a v produkcii formulár zobrazí chybu s telefónom.
 

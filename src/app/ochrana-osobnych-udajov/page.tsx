@@ -132,7 +132,7 @@ export default function Privacy() {
             <strong>Vercel Inc.</strong> – hosting webovej stránky,
           </li>
           <li>
-            <strong>Resend</strong> – doručenie správy z formulára do našej e-mailovej schránky,
+            <strong>Resend</strong> – doručenie správy z formulára do našej schránky a potvrdzujúceho e-mailu vám,
           </li>
           <li>
             <strong>Google</strong> – e-mailová schránka, do ktorej dopyty prichádzajú,
