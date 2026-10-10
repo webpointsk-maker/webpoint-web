@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { contact, socials } from "@/content/site";
+import { company, contact, socials } from "@/content/site";
 import { LogoMark } from "./ui";
 
 export function Footer() {
@@ -45,7 +45,11 @@ export function Footer() {
           )}
         </div>
 
-        <div className="mt-14 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs sm:flex-row sm:justify-between">
+        <p className="mt-14 border-t border-white/10 pt-6 text-xs leading-relaxed text-white/45">
+          {company.name} – {company.brand}, {company.street}, {company.zip} {company.city} · IČO:{" "}
+          {company.ico} · {company.register} · {company.vat}
+        </p>
+        <div className="mt-4 flex flex-col gap-2 text-xs sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} WebPoint. Všetky práva vyhradené.</p>
           <Link href="/ochrana-osobnych-udajov" className="hover:text-white">
             Ochrana osobných údajov

@@ -7,6 +7,20 @@ export const contact = {
   city: "Žilina",
 };
 
+// Identifikačné údaje prevádzkovateľa (pätička a ochrana osobných údajov)
+export const company = {
+  name: "Andrej Černák",
+  brand: "WebPoint",
+  type: "fyzická osoba – podnikateľ (živnostník)",
+  street: "Suvorovova 2683/30A",
+  zip: "010 01",
+  city: "Žilina",
+  country: "Slovenská republika",
+  ico: "57126925",
+  register: "Živnostenský register, číslo 580-83616",
+  vat: "Neplatiteľ DPH",
+};
+
 // Odkazy na sociálne siete – doplňte URL, prázdne sa nezobrazia.
 export const socials: { label: string; href: string }[] = [
   { label: "Instagram", href: "" },

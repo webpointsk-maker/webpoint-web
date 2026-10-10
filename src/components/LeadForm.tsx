@@ -88,11 +88,11 @@ export function LeadForm() {
         <label className="flex items-start gap-3 text-sm text-white/60 sm:col-span-2">
           <input type="checkbox" name="consent" required className="mt-1 accent-brand" />
           <span>
-            Súhlasím so{" "}
+            Oboznámil/a som sa s{" "}
             <Link href="/ochrana-osobnych-udajov" className="underline hover:text-white">
-              spracovaním osobných údajov
-            </Link>{" "}
-            za účelom kontaktovania. *
+              informáciami o spracúvaní osobných údajov
+            </Link>
+            . *
           </span>
         </label>
       </div>
